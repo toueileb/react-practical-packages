@@ -1,17 +1,21 @@
 import React from 'react';
 import './App.css';
-import {FaReact} from 'react-icons/fa'
-import {MdAlarm} from "react-icons/md";
-import {IconContext} from 'react-icons'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+toast.configure();
 function App() {
+    const notify = () => {
+        toast('Basic Notification', {position: toast.POSITION.TOP_LEFT});
+        toast.success('Success Notification', {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 8000
+        });
+    };
     return (
-        <IconContext.Provider value={{color: 'blue', size: '5rem'}}>
             <div className="App">
-                <FaReact />
-                <MdAlarm />
+                <button onClick={notify}>Notify!</button>
             </div>
-        </IconContext.Provider>
     );
 }
 
